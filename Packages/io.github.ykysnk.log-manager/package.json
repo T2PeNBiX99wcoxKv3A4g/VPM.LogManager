@@ -6,7 +6,6 @@
   "gitDependencies": {},
   "vpmDependencies": {
     "com.vrchat.worlds": ">=3.9.0",
-    "io.github.ykysnk.utils.world": ">=0.0.4",
     "io.github.ykysnk.cheat-client-protector": ">=0.1.0"
   },
   "author": {
