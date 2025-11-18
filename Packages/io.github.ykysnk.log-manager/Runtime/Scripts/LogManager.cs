@@ -14,33 +14,33 @@ namespace io.github.ykysnk.LogManager
 
         public void AddLog(string prefixColor, string prefix, string message, LogType logType, int key)
         {
-            if (!IsPublicKeyCorrect(key)) return;
+            if (!IsKeyCorrect(key)) return;
             foreach (var logPanel in logPanels)
-                logPanel.AddLog(prefixColor, prefix, message, logType, logPanel.RandomKeyPublic);
+                logPanel.AddLog(prefixColor, prefix, message, logType, logPanel.RandomKey);
         }
 
         public void Log(string prefixColor, string prefix, string message, int key)
         {
-            if (!IsPublicKeyCorrect(key)) return;
-            AddLog(prefixColor, prefix, message, LogType.Log, RandomKeyPublic);
+            if (!IsKeyCorrect(key)) return;
+            AddLog(prefixColor, prefix, message, LogType.Log, RandomKey);
         }
 
         public void LogWarning(string prefixColor, string prefix, string message, int key)
         {
-            if (!IsPublicKeyCorrect(key)) return;
-            AddLog(prefixColor, prefix, message, LogType.Warning, RandomKeyPublic);
+            if (!IsKeyCorrect(key)) return;
+            AddLog(prefixColor, prefix, message, LogType.Warning, RandomKey);
         }
 
         public void LogError(string prefixColor, string prefix, string message, int key)
         {
-            if (!IsPublicKeyCorrect(key)) return;
-            AddLog(prefixColor, prefix, message, LogType.Error, RandomKeyPublic);
+            if (!IsKeyCorrect(key)) return;
+            AddLog(prefixColor, prefix, message, LogType.Error, RandomKey);
         }
 
         public void LogAssertion(string prefixColor, string prefix, string message, int key)
         {
-            if (!IsPublicKeyCorrect(key)) return;
-            AddLog(prefixColor, prefix, message, LogType.Assert, RandomKeyPublic);
+            if (!IsKeyCorrect(key)) return;
+            AddLog(prefixColor, prefix, message, LogType.Assert, RandomKey);
         }
     }
 }

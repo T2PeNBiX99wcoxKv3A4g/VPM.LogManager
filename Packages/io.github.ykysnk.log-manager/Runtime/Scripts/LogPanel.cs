@@ -27,7 +27,7 @@ namespace io.github.ykysnk.LogManager
 
         internal void AddLog(string prefixColor, string prefix, string message, LogType logType, int key)
         {
-            if (!IsPublicKeyCorrect(key)) return;
+            if (!IsKeyCorrect(key)) return;
             var time = DateTime.Now.ToString("HH:mm:ss");
             var newMessage = message;
             string logTypeText;
