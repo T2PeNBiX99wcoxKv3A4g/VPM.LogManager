@@ -1,5 +1,6 @@
 ﻿using System;
 using io.github.ykysnk.CheatClientProtector;
+using io.github.ykysnk.utils;
 using JetBrains.Annotations;
 using UdonSharp;
 using UnityEngine;
@@ -54,7 +55,7 @@ namespace io.github.ykysnk.LogManager
                     logTypeText = InfoText;
                     break;
                 default:
-                    Debug.LogError($"Unknown log type: {logType}");
+                    Utils.LogError(nameof(LogPanel), $"Unknown log type: {logType}");
                     return;
             }
 
