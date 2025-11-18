@@ -17,6 +17,9 @@
     },
     "io.github.ykysnk.cheat-client-protector": {
       "version": "0.0.1"
+    },
+    "blueamulet.udonsharpoptimizer": {
+      "version": "1.0.12"
     }
   },
   "locked": {
@@ -60,6 +63,12 @@
       "dependencies": {
         "com.vrchat.worlds": ">=3.9.0",
         "io.github.ykysnk.utils.world": ">=0.0.4"
+      }
+    },
+    "blueamulet.udonsharpoptimizer": {
+      "version": "1.0.12",
+      "dependencies": {
+        "com.vrchat.worlds": "^3.4.2"
       }
     }
   }
