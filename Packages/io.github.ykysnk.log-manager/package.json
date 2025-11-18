@@ -1,11 +1,12 @@
 {
   "name": "io.github.ykysnk.log-manager",
   "displayName": "Log Manager",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Log manager for world",
   "gitDependencies": {},
   "vpmDependencies": {
     "com.vrchat.worlds": ">=3.9.0",
+    "net.narazaka.vrchat.tmp-fallback-fonts-jp": ">=1.0.2",
     "io.github.ykysnk.cheat-client-protector": ">=0.1.0"
   },
   "author": {
