@@ -6,26 +6,18 @@ namespace io.github.ykysnk.LogManager.Editor;
 [CustomEditor(typeof(LogManager))]
 public class LogManagerEditor : BasicEditor
 {
-    private const string ContentTransformProp = "contentTransform";
-    private const string LogInstancesPrefabProp = "logInstancesPrefab";
-    private const string MaxLines = "maxLines";
-
-    private SerializedProperty? _contentTransformProperty;
-    private SerializedProperty? _logInstancesPrefabProperty;
-    private SerializedProperty? _maxLinesProperty;
-
-    protected override void OnEnable()
-    {
-        _contentTransformProperty = serializedObject.FindProperty(ContentTransformProp);
-        _logInstancesPrefabProperty = serializedObject.FindProperty(LogInstancesPrefabProp);
-        _maxLinesProperty = serializedObject.FindProperty(MaxLines);
-    }
-
     protected override void OnInspectorGUIDraw()
     {
-        EditorGUILayout.PropertyField(_contentTransformProperty);
-        EditorGUILayout.PropertyField(_logInstancesPrefabProperty);
-        EditorGUILayout.PropertyField(_maxLinesProperty);
-        EditorGUILayout.HelpBox("LogManager will automatically generate 'LogInstance' in play mode.", MessageType.Info);
+        var count = FindObjectsOfType<LogManager>().Length;
+
+        if (count > 1)
+            EditorGUILayout.HelpBox("More than one LogManager found in scene.", MessageType.Warning);
+
+        var count2 = FindObjectsOfType<LogPanel>().Length;
+
+        if (count2 < 1)
+            EditorGUILayout.HelpBox("No LogPanel found in scene.", MessageType.Error);
+
+        EditorGUILayout.HelpBox("LogManager will automatically find all log panels", MessageType.Info);
     }
 }

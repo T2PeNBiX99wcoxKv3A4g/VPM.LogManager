@@ -1,0 +1,90 @@
+﻿using System;
+using io.github.ykysnk.CheatClientProtector;
+using JetBrains.Annotations;
+using UdonSharp;
+using UnityEngine;
+
+namespace io.github.ykysnk.LogManager
+{
+    [AddComponentMenu("yky/Log Manager/Log Panel")]
+    [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
+    [PublicAPI]
+    public class LogPanel : CheatClientProtectorBehaviour
+    {
+        private const string ErrorText = "<color=red>ERROR</color>";
+        private const string AssertText = "<color=red>ASSERT</color>";
+        private const string ExceptionText = "<color=red>EXCEPTION</color>";
+        private const string WarningText = "<color=yellow>WARN</color>";
+        private const string InfoText = "INFO";
+        public RectTransform contentTransform;
+        public GameObject logInstancesPrefab;
+        public int maxLines = 200;
+        public LogInstance[] logInstances;
+
+        private int _currentLine = -1;
+        private int _nowMaxLines;
+
+        internal void AddLog(string prefixColor, string prefix, string message, LogType logType, int key)
+        {
+            if (!IsPublicKeyCorrect(key)) return;
+            var time = DateTime.Now.ToString("HH:mm:ss");
+            var newMessage = message;
+            string logTypeText;
+
+            switch (logType)
+            {
+                case LogType.Assert:
+                    newMessage = $"<color=red>{message}</color>";
+                    logTypeText = AssertText;
+                    break;
+                // Never gonna use I guess
+                case LogType.Exception:
+                    newMessage = $"<color=red>{message}</color>";
+                    logTypeText = ExceptionText;
+                    break;
+                case LogType.Error:
+                    newMessage = $"<color=red>{message}</color>";
+                    logTypeText = ErrorText;
+                    break;
+                case LogType.Warning:
+                    newMessage = $"<color=yellow>{message}</color>";
+                    logTypeText = WarningText;
+                    break;
+                case LogType.Log:
+                    logTypeText = InfoText;
+                    break;
+                default:
+                    Debug.LogError($"Unknown log type: {logType}");
+                    return;
+            }
+
+            var newLog =
+                $"[<color=black>{time}</color>] [{logTypeText}] [<color={prefixColor}>{prefix}</color>] {newMessage}";
+
+            _currentLine++;
+            _nowMaxLines++;
+
+            if (_nowMaxLines > maxLines)
+                MoveLogsUp();
+
+            var logInstance = logInstances[_currentLine];
+
+            logInstance.Text = newLog;
+            if (!logInstance.gameObject.activeSelf)
+                logInstance.gameObject.SetActive(true);
+        }
+
+        private void MoveLogsUp()
+        {
+            for (var i = 1; i < logInstances.Length; i++)
+            {
+                var lastLog = logInstances[i - 1];
+                var log = logInstances[i];
+                lastLog.Text = log.Text;
+            }
+
+            _currentLine--;
+            _nowMaxLines--;
+        }
+    }
+}

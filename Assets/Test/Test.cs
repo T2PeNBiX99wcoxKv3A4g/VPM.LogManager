@@ -5,8 +5,19 @@ using UnityEngine;
 namespace Test
 {
     public class Test : CheatClientProtectorBehaviour
+#if !COMPILER_UDONSHARP && UNITY_EDITOR
+        , ILogManager
+#endif
     {
         [SerializeField] private LogManager logManager;
+
+#if !COMPILER_UDONSHARP && UNITY_EDITOR
+        public LogManager LogManager
+        {
+            get => logManager;
+            set => logManager = value;
+        }
+#endif
 
         private void Start()
         {

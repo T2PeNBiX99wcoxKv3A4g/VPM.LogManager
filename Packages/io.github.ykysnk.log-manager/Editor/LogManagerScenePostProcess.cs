@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using UdonSharp;
 using UnityEditor.Callbacks;
 using VRC.SDKBase;
 using Object = UnityEngine.Object;
@@ -8,26 +10,44 @@ namespace io.github.ykysnk.LogManager.Editor;
 
 public static class LogManagerScenePostProcess
 {
-    private static LogManager[] _logManagers =
-    {
-    };
+    private static LogManager? _logManager;
+    private static List<LogPanel> _logPanels = new();
 
     [PostProcessScene(-100)]
     public static void ScenePostProcess()
     {
-        _logManagers = Object.FindObjectsOfType<LogManager>();
+        var logManagers = Object.FindObjectsOfType<LogManager>().ToList();
+
+        switch (logManagers.Count)
+        {
+            case < 1:
+                return;
+            case > 1:
+                throw new("More than one LogManager found in scene.");
+        }
+
+        _logManager = logManagers[0];
+        _logPanels = Object.FindObjectsOfType<LogPanel>().ToList();
+        AddLogPanel();
+        CreateLogInstance();
         SetLogManager();
     }
 
-    private static void SetLogManager()
+    private static void AddLogPanel()
     {
-        foreach (var logManager in _logManagers)
+        if (_logManager == null) return;
+        _logManager.logPanels = _logPanels.ToArray();
+    }
+
+    private static void CreateLogInstance()
+    {
+        foreach (var logPanel in _logPanels)
         {
             var logInstanceList = new List<LogInstance>();
 
-            for (var i = 0; i < logManager.maxLines; i++)
+            for (var i = 0; i < logPanel.maxLines; i++)
             {
-                var logInstanceObj = Object.Instantiate(logManager.logInstancesPrefab, logManager.contentTransform);
+                var logInstanceObj = Object.Instantiate(logPanel.logInstancesPrefab, logPanel.contentTransform);
                 logInstanceObj.name = $"LogInstance {i}";
                 logInstanceObj.SetActive(false);
                 var logInstance = logInstanceObj.GetComponent<LogInstance>();
@@ -36,7 +56,13 @@ public static class LogManagerScenePostProcess
                 logInstanceList.Add(logInstance);
             }
 
-            logManager.logInstances = logInstanceList.ToArray();
+            logPanel.logInstances = logInstanceList.ToArray();
         }
+    }
+
+    private static void SetLogManager()
+    {
+        foreach (var withLogManager in Object.FindObjectsOfType<UdonSharpBehaviour>(true).OfType<ILogManager>())
+            withLogManager.LogManager = _logManager;
     }
 }
