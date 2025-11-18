@@ -11,6 +11,11 @@ namespace Test
     {
         [SerializeField] private LogManager logManager;
 
+        private void Start()
+        {
+            logManager.Log("black", "test", $"test: {this}", logManager.RandomKey);
+        }
+
 #if !COMPILER_UDONSHARP && UNITY_EDITOR
         public LogManager LogManager
         {
@@ -19,14 +24,9 @@ namespace Test
         }
 #endif
 
-        private void Start()
-        {
-            logManager.Log("black", "test", $"test: {this}", logManager.RandomKeyPublic);
-        }
-
         public override void Interact()
         {
-            logManager.Log("black", "test", $"test: {this}", logManager.RandomKeyPublic);
+            logManager.Log("black", "test", $"test: {this}", logManager.RandomKey);
         }
     }
 }
