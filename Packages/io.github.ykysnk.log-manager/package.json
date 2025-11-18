@@ -1,7 +1,7 @@
 {
   "name": "io.github.ykysnk.log-manager",
   "displayName": "Log Manager",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Log manager for world",
   "gitDependencies": {},
   "vpmDependencies": {

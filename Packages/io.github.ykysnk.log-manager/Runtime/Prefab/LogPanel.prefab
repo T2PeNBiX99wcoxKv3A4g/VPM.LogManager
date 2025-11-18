@@ -731,6 +731,9 @@ MonoBehaviour:
     type: 3}
   maxLines: 200
   logInstances: []
+  scrollRect: {fileID: 4110381807397915802}
+  verticalLayoutGroup: {fileID: 2888175885974018352}
+  contentSizeFitter: {fileID: 1489066283188534075}
 --- !u!114 &482586097038623529
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -4,6 +4,7 @@ using io.github.ykysnk.utils;
 using JetBrains.Annotations;
 using UdonSharp;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace io.github.ykysnk.LogManager
 {
@@ -21,6 +22,9 @@ namespace io.github.ykysnk.LogManager
         public GameObject logInstancesPrefab;
         public int maxLines = 200;
         public LogInstance[] logInstances;
+        [SerializeField] private ScrollRect scrollRect;
+        [SerializeField] private VerticalLayoutGroup verticalLayoutGroup;
+        [SerializeField] private ContentSizeFitter contentSizeFitter;
 
         private int _currentLine = -1;
         private int _nowMaxLines;
@@ -73,6 +77,7 @@ namespace io.github.ykysnk.LogManager
             logInstance.Text = newLog;
             if (!logInstance.gameObject.activeSelf)
                 logInstance.gameObject.SetActive(true);
+            ToTheButton();
         }
 
         private void MoveLogsUp()
@@ -86,6 +91,16 @@ namespace io.github.ykysnk.LogManager
 
             _currentLine--;
             _nowMaxLines--;
+        }
+
+        private void ToTheButton()
+        {
+            if (!verticalLayoutGroup || !contentSizeFitter || !scrollRect) return;
+            Canvas.ForceUpdateCanvases();
+            verticalLayoutGroup.CalculateLayoutInputHorizontal();
+            verticalLayoutGroup.CalculateLayoutInputVertical();
+            contentSizeFitter.SetLayoutVertical();
+            scrollRect.verticalNormalizedPosition = 0;
         }
     }
 }
