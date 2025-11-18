@@ -26,7 +26,7 @@ namespace Test
 
         public override void Interact()
         {
-            logManager.Log("black", "test", $"test: {this}", logManager.RandomKey);
+            logManager.Log("black", "test", $"interact test: {this}", logManager.RandomKey);
         }
     }
 }
