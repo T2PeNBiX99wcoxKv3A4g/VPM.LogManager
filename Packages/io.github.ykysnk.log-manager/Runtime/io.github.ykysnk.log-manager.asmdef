@@ -1,0 +1,21 @@
+{
+  "name": "io.github.ykysnk.log-manager",
+  "rootNamespace": "io.github.ykysnk.LogManager",
+  "references": [
+    "VRC.SDK3",
+    "VRC.SDKBase",
+    "UdonSharp.Runtime",
+    "Unity.TextMeshPro",
+    "io.github.ykysnk.utils",
+    "io.github.ykysnk.cheat-client-protector"
+  ],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}
