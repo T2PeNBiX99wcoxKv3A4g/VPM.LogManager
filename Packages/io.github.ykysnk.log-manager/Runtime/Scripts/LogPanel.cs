@@ -29,7 +29,8 @@ namespace io.github.ykysnk.LogManager
         private int _currentLine = -1;
         private int _nowMaxLines;
 
-        internal void AddLog(string prefixColor, string prefix, string message, LogType logType, int key)
+        internal void AddLog([NotNull] string prefixColor, [NotNull] string prefix, [CanBeNull] string message,
+            LogType logType, int key)
         {
             if (!IsKeyCorrect(key)) return;
             var time = DateTime.Now.ToString("HH:mm:ss");

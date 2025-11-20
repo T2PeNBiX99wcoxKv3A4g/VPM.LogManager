@@ -29,7 +29,8 @@ namespace io.github.ykysnk.LogManager
         /// <param name="message">The actual log message to be displayed or recorded.</param>
         /// <param name="logType">The type of the log (e.g., Log, Warning, Error, Assertion).</param>
         /// <param name="key">The security key used to validate the operation.</param>
-        public void AddLog(string prefixColor, string prefix, string message, LogType logType, int key)
+        public void AddLog([NotNull] string prefixColor, [NotNull] string prefix, [CanBeNull] string message,
+            LogType logType, int key)
         {
             if (!IsKeyCorrect(key)) return;
             foreach (var logPanel in logPanels)
@@ -43,7 +44,7 @@ namespace io.github.ykysnk.LogManager
         /// <param name="prefix">The prefix text identifying the source or type of the log entry.</param>
         /// <param name="message">The actual log message to be displayed or recorded.</param>
         /// <param name="key">The security key used to validate the operation.</param>
-        public void Log(string prefixColor, string prefix, string message, int key)
+        public void Log([NotNull] string prefixColor, [NotNull] string prefix, [CanBeNull] string message, int key)
         {
             if (!IsKeyCorrect(key)) return;
             AddLog(prefixColor, prefix, message, LogType.Log, RandomKey);
@@ -56,7 +57,7 @@ namespace io.github.ykysnk.LogManager
         /// <param name="prefix">The prefix text indicating the source or context of the warning message.</param>
         /// <param name="message">The content of the warning message to be logged.</param>
         /// <param name="key">The security key used to authorize the logging operation.</param>
-        public void LogWarning(string prefixColor, string prefix, string message, int key)
+        public void LogWarning([NotNull] string prefixColor, [NotNull] string prefix, [CanBeNull] string message, int key)
         {
             if (!IsKeyCorrect(key)) return;
             AddLog(prefixColor, prefix, message, LogType.Warning, RandomKey);
@@ -69,7 +70,7 @@ namespace io.github.ykysnk.LogManager
         /// <param name="prefix">The prefix text identifying the source or type of the error log entry.</param>
         /// <param name="message">The actual error message to be displayed or recorded.</param>
         /// <param name="key">The security key used to validate the operation.</param>
-        public void LogError(string prefixColor, string prefix, string message, int key)
+        public void LogError([NotNull] string prefixColor, [NotNull] string prefix, [CanBeNull] string message, int key)
         {
             if (!IsKeyCorrect(key)) return;
             AddLog(prefixColor, prefix, message, LogType.Error, RandomKey);
@@ -82,7 +83,8 @@ namespace io.github.ykysnk.LogManager
         /// <param name="prefix">The prefix text identifying the source or category of the log assertion.</param>
         /// <param name="message">The assertion message to be logged and displayed.</param>
         /// <param name="key">The security key used to authenticate this logging operation.</param>
-        public void LogAssertion(string prefixColor, string prefix, string message, int key)
+        public void LogAssertion([NotNull] string prefixColor, [NotNull] string prefix, [CanBeNull] string message,
+            int key)
         {
             if (!IsKeyCorrect(key)) return;
             AddLog(prefixColor, prefix, message, LogType.Assert, RandomKey);
