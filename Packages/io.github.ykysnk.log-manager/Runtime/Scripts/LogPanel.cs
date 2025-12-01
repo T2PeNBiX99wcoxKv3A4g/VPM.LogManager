@@ -32,7 +32,7 @@ namespace io.github.ykysnk.LogManager
         internal void AddLog([NotNull] string prefixColor, [NotNull] string prefix, [CanBeNull] string message,
             LogType logType, int key)
         {
-            if (!IsKeyCorrect(key)) return;
+            if (!IsKeyCorrect(key) || !Utils.IsPlaying()) return;
             var time = DateTime.Now.ToString("HH:mm:ss");
             var newMessage = message;
             string logTypeText;
