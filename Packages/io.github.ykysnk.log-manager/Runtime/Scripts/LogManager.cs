@@ -1,4 +1,5 @@
 ﻿using io.github.ykysnk.CheatClientProtector;
+using io.github.ykysnk.utils;
 using JetBrains.Annotations;
 using UdonSharp;
 using UnityEngine;
@@ -32,7 +33,7 @@ namespace io.github.ykysnk.LogManager
         public void AddLog([NotNull] string prefixColor, [NotNull] string prefix, [CanBeNull] string message,
             LogType logType, int key)
         {
-            if (!IsKeyCorrect(key)) return;
+            if (!IsKeyCorrect(key) || !Utils.IsPlaying()) return;
             foreach (var logPanel in logPanels)
                 logPanel.AddLog(prefixColor, prefix, message, logType, logPanel.RandomKey);
         }
@@ -46,7 +47,7 @@ namespace io.github.ykysnk.LogManager
         /// <param name="key">The security key used to validate the operation.</param>
         public void Log([NotNull] string prefixColor, [NotNull] string prefix, [CanBeNull] string message, int key)
         {
-            if (!IsKeyCorrect(key)) return;
+            if (!IsKeyCorrect(key) || !Utils.IsPlaying()) return;
             AddLog(prefixColor, prefix, message, LogType.Log, RandomKey);
         }
 
@@ -59,7 +60,7 @@ namespace io.github.ykysnk.LogManager
         /// <param name="key">The security key used to authorize the logging operation.</param>
         public void LogWarning([NotNull] string prefixColor, [NotNull] string prefix, [CanBeNull] string message, int key)
         {
-            if (!IsKeyCorrect(key)) return;
+            if (!IsKeyCorrect(key) || !Utils.IsPlaying()) return;
             AddLog(prefixColor, prefix, message, LogType.Warning, RandomKey);
         }
 
@@ -72,7 +73,7 @@ namespace io.github.ykysnk.LogManager
         /// <param name="key">The security key used to validate the operation.</param>
         public void LogError([NotNull] string prefixColor, [NotNull] string prefix, [CanBeNull] string message, int key)
         {
-            if (!IsKeyCorrect(key)) return;
+            if (!IsKeyCorrect(key) || !Utils.IsPlaying()) return;
             AddLog(prefixColor, prefix, message, LogType.Error, RandomKey);
         }
 
@@ -86,7 +87,7 @@ namespace io.github.ykysnk.LogManager
         public void LogAssertion([NotNull] string prefixColor, [NotNull] string prefix, [CanBeNull] string message,
             int key)
         {
-            if (!IsKeyCorrect(key)) return;
+            if (!IsKeyCorrect(key) || !Utils.IsPlaying()) return;
             AddLog(prefixColor, prefix, message, LogType.Assert, RandomKey);
         }
     }
