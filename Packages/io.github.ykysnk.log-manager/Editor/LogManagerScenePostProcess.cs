@@ -2,19 +2,22 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UdonSharp;
-using UnityEditor.Callbacks;
+using UnityEditor.Build;
+using UnityEditor.Build.Reporting;
+using UnityEngine.SceneManagement;
 using VRC.SDKBase;
 using Object = UnityEngine.Object;
 
 namespace io.github.ykysnk.LogManager.Editor;
 
-public static class LogManagerScenePostProcess
+public class LogManagerScenePostProcess : IProcessSceneWithReport
 {
     private static LogManager? _logManager;
     private static List<LogPanel> _logPanels = new();
 
-    [PostProcessScene(-100)]
-    public static void ScenePostProcess()
+    public int callbackOrder => -100;
+
+    public void OnProcessScene(Scene scene, BuildReport report)
     {
         var logManagers = Object.FindObjectsOfType<LogManager>().ToList();
 
