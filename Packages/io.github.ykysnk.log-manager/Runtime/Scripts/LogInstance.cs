@@ -1,7 +1,6 @@
 ﻿using TMPro;
 using UdonSharp;
 using UnityEngine;
-using VRC.SDKBase;
 
 namespace io.github.ykysnk.LogManager
 {
@@ -19,8 +18,7 @@ namespace io.github.ykysnk.LogManager
 
         private void OnValidate()
         {
-            if (!Utilities.IsValid(inputField))
-                inputField = GetComponent<TMP_InputField>();
+            inputField = GetComponent<TMP_InputField>();
         }
     }
 }
