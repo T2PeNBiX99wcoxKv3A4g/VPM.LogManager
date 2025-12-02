@@ -3,12 +3,14 @@ using io.github.ykysnk.utils.Editor;
 
 namespace io.github.ykysnk.LogManager.Editor;
 
-public abstract class LogManagerEditorBase : BasicEditor
+internal abstract class LogManagerEditorBase : BasicEditor
 {
+    internal const string LocalizationID = "io.github.ykysnk.log-manager";
+
     protected override void OnInspectorGUIDraw()
     {
         OnLogManagerInspectorGUI();
-        GlobalLocalization.SelectLanguageGUI(EditorUtils.LocalizationID);
+        GlobalLocalization.SelectLanguageGUI(LocalizationID);
     }
 
     protected abstract void OnLogManagerInspectorGUI();

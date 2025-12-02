@@ -5,7 +5,7 @@ using UnityEditor;
 namespace io.github.ykysnk.LogManager.Editor;
 
 [CustomEditor(typeof(LogInstance))]
-public class LogInstanceEditor : LogManagerEditorBase
+internal class LogInstanceEditor : LogManagerEditorBase
 {
     private const string InputFieldProp = "inputField";
 
@@ -24,8 +24,8 @@ public class LogInstanceEditor : LogManagerEditorBase
         if (_inputFieldProperty?.objectReferenceValue == null ||
             _inputFieldProperty?.objectReferenceValue != inputFieldComponent)
             EditorGUILayout.PropertyField(_inputFieldProperty,
-                "label.log_instance.input_field".G(EditorUtils.LocalizationID));
+                "label.log_instance.input_field".G(LocalizationID));
 
-        EditorGUILayout.HelpBox("label.log_instance.info".L(EditorUtils.LocalizationID), MessageType.Info);
+        EditorGUILayout.HelpBox("label.log_instance.info".L(LocalizationID), MessageType.Info);
     }
 }

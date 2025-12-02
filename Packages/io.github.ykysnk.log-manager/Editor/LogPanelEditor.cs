@@ -4,7 +4,7 @@ using UnityEditor;
 namespace io.github.ykysnk.LogManager.Editor;
 
 [CustomEditor(typeof(LogPanel))]
-public class LogPanelEditor : LogManagerEditorBase
+internal class LogPanelEditor : LogManagerEditorBase
 {
     private const string ContentTransformProp = "contentTransform";
     private const string LogInstancesPrefabProp = "logInstancesPrefab";
@@ -33,37 +33,37 @@ public class LogPanelEditor : LogManagerEditorBase
     protected override void OnLogManagerInspectorGUI()
     {
         EditorGUILayout.PropertyField(_contentTransformProperty,
-            "label.log_panel.content_transform".G(EditorUtils.LocalizationID));
+            "label.log_panel.content_transform".G(LocalizationID));
         if (_contentTransformProperty?.objectReferenceValue == null)
-            EditorGUILayout.HelpBox("label.log_panel.content_transform.error".L(EditorUtils.LocalizationID),
+            EditorGUILayout.HelpBox("label.log_panel.content_transform.error".L(LocalizationID),
                 MessageType.Error);
 
         EditorGUILayout.PropertyField(_verticalLayoutGroupProperty,
-            "label.log_panel.vertical_layout_group".G(EditorUtils.LocalizationID));
+            "label.log_panel.vertical_layout_group".G(LocalizationID));
         EditorGUILayout.PropertyField(_contentSizeFitterProperty,
-            "label.log_panel.content_size_fitter".G(EditorUtils.LocalizationID));
-        EditorGUILayout.PropertyField(_scrollRectProperty, "label.log_panel.scroll_rect".G(EditorUtils.LocalizationID));
+            "label.log_panel.content_size_fitter".G(LocalizationID));
+        EditorGUILayout.PropertyField(_scrollRectProperty, "label.log_panel.scroll_rect".G(LocalizationID));
 
         EditorGUILayout.PropertyField(_logInstancesPrefabProperty,
-            "label.log_panel.log_instances_prefab".G(EditorUtils.LocalizationID));
+            "label.log_panel.log_instances_prefab".G(LocalizationID));
         if (_logInstancesPrefabProperty?.objectReferenceValue == null)
-            EditorGUILayout.HelpBox("label.log_panel.log_instances_prefab.error".L(EditorUtils.LocalizationID),
+            EditorGUILayout.HelpBox("label.log_panel.log_instances_prefab.error".L(LocalizationID),
                 MessageType.Error);
 
-        EditorGUILayout.PropertyField(_maxLinesProperty, "label.log_panel.max_lines".G(EditorUtils.LocalizationID));
+        EditorGUILayout.PropertyField(_maxLinesProperty, "label.log_panel.max_lines".G(LocalizationID));
 
         var count = FindObjectsOfType<LogManager>().Length;
 
         switch (count)
         {
             case < 1:
-                EditorGUILayout.HelpBox("label.log_panel.error".L(EditorUtils.LocalizationID), MessageType.Error);
+                EditorGUILayout.HelpBox("label.log_panel.error".L(LocalizationID), MessageType.Error);
                 break;
             case > 1:
                 EditorGUILayout.HelpBox("label.log_panel.warning", MessageType.Warning);
                 break;
         }
 
-        EditorGUILayout.HelpBox("label.log_panel.info".L(EditorUtils.LocalizationID), MessageType.Info);
+        EditorGUILayout.HelpBox("label.log_panel.info".L(LocalizationID), MessageType.Info);
     }
 }

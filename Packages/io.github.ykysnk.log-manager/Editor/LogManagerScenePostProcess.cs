@@ -11,7 +11,7 @@ using Object = UnityEngine.Object;
 
 namespace io.github.ykysnk.LogManager.Editor;
 
-public class LogManagerScenePostProcess : IProcessSceneWithReport
+internal class LogManagerScenePostProcess : IProcessSceneWithReport
 {
     private static LogManager? _logManager;
     private static List<LogPanel> _logPanels = new();
@@ -27,7 +27,7 @@ public class LogManagerScenePostProcess : IProcessSceneWithReport
             case < 1:
                 return;
             case > 1:
-                throw new("log.log_manager_scene_post_process.error".L(EditorUtils.LocalizationID));
+                throw new("log.log_manager_scene_post_process.error".L(LogManagerEditorBase.LocalizationID));
         }
 
         _logManager = logManagers[0];
@@ -57,7 +57,8 @@ public class LogManagerScenePostProcess : IProcessSceneWithReport
                 var logInstance = logInstanceObj.GetComponent<LogInstance>();
                 if (!Utilities.IsValid(logInstance))
                     throw new NullReferenceException(string.Format(
-                        "log.log_manager_scene_post_process.null_reference_exception".L(EditorUtils.LocalizationID), i));
+                        "log.log_manager_scene_post_process.null_reference_exception".L(LogManagerEditorBase
+                            .LocalizationID), i));
                 logInstanceList.Add(logInstance);
             }
 
