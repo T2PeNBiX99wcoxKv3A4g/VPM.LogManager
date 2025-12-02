@@ -3,6 +3,7 @@ using io.github.ykysnk.CheatClientProtector;
 using io.github.ykysnk.utils;
 using JetBrains.Annotations;
 using UdonSharp;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -28,6 +29,19 @@ namespace io.github.ykysnk.LogManager
 
         private int _currentLine = -1;
         private int _nowMaxLines;
+
+#if !COMPILER_UDONSHARP && UNITY_EDITOR
+        private void OnValidate()
+        {
+            var count = FindObjectsOfType<LogManager>().Length;
+
+            if (!gameObject.scene.IsValid() || Utils.IsInPrefab() || count > 0) return;
+            var prefab = AssetDatabase.LoadAssetAtPath<GameObject>(
+                AssetDatabase.GUIDToAssetPath("16f3fd2a273a9ab4c997d97e9da89336"));
+            PrefabUtility.InstantiatePrefab(prefab);
+            Utils.Log(nameof(LogPanel), "Created LogManager prefab");
+        }
+#endif
 
         internal void AddLog([NotNull] string prefixColor, [NotNull] string prefix, [CanBeNull] string message,
             LogType logType, int key)
