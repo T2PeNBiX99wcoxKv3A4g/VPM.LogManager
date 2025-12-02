@@ -1,10 +1,10 @@
-using io.github.ykysnk.utils.Editor;
+using io.github.ykysnk.Localization.Editor;
 using UnityEditor;
 
 namespace io.github.ykysnk.LogManager.Editor;
 
 [CustomEditor(typeof(LogPanel))]
-public class LogPanelEditor : BasicEditor
+public class LogPanelEditor : LogManagerEditorBase
 {
     private const string ContentTransformProp = "contentTransform";
     private const string LogInstancesPrefabProp = "logInstancesPrefab";
@@ -12,8 +12,8 @@ public class LogPanelEditor : BasicEditor
     private const string ScrollRectProp = "scrollRect";
     private const string VerticalLayoutGroupProp = "verticalLayoutGroup";
     private const string ContentSizeFitterProp = "contentSizeFitter";
-    private SerializedProperty? _contentSizeFitterProperty;
 
+    private SerializedProperty? _contentSizeFitterProperty;
     private SerializedProperty? _contentTransformProperty;
     private SerializedProperty? _logInstancesPrefabProperty;
     private SerializedProperty? _maxLinesProperty;
@@ -30,34 +30,40 @@ public class LogPanelEditor : BasicEditor
         _contentSizeFitterProperty = serializedObject.FindProperty(ContentSizeFitterProp);
     }
 
-    protected override void OnInspectorGUIDraw()
+    protected override void OnLogManagerInspectorGUI()
     {
-        EditorGUILayout.PropertyField(_contentTransformProperty);
+        EditorGUILayout.PropertyField(_contentTransformProperty,
+            "label.log_panel.content_transform".G(EditorUtils.LocalizationID));
         if (_contentTransformProperty?.objectReferenceValue == null)
-            EditorGUILayout.HelpBox("ContentTransform is required.", MessageType.Error);
+            EditorGUILayout.HelpBox("label.log_panel.content_transform.error".L(EditorUtils.LocalizationID),
+                MessageType.Error);
 
-        EditorGUILayout.PropertyField(_verticalLayoutGroupProperty);
-        EditorGUILayout.PropertyField(_contentSizeFitterProperty);
-        EditorGUILayout.PropertyField(_scrollRectProperty);
+        EditorGUILayout.PropertyField(_verticalLayoutGroupProperty,
+            "label.log_panel.vertical_layout_group".G(EditorUtils.LocalizationID));
+        EditorGUILayout.PropertyField(_contentSizeFitterProperty,
+            "label.log_panel.content_size_fitter".G(EditorUtils.LocalizationID));
+        EditorGUILayout.PropertyField(_scrollRectProperty, "label.log_panel.scroll_rect".G(EditorUtils.LocalizationID));
 
-        EditorGUILayout.PropertyField(_logInstancesPrefabProperty);
+        EditorGUILayout.PropertyField(_logInstancesPrefabProperty,
+            "label.log_panel.log_instances_prefab".G(EditorUtils.LocalizationID));
         if (_logInstancesPrefabProperty?.objectReferenceValue == null)
-            EditorGUILayout.HelpBox("LogInstancesPrefab is required.", MessageType.Error);
+            EditorGUILayout.HelpBox("label.log_panel.log_instances_prefab.error".L(EditorUtils.LocalizationID),
+                MessageType.Error);
 
-        EditorGUILayout.PropertyField(_maxLinesProperty);
+        EditorGUILayout.PropertyField(_maxLinesProperty, "label.log_panel.max_lines".G(EditorUtils.LocalizationID));
 
         var count = FindObjectsOfType<LogManager>().Length;
 
         switch (count)
         {
             case < 1:
-                EditorGUILayout.HelpBox("No LogManager found in scene.", MessageType.Error);
+                EditorGUILayout.HelpBox("label.log_panel.error".L(EditorUtils.LocalizationID), MessageType.Error);
                 break;
             case > 1:
-                EditorGUILayout.HelpBox("More than one LogManager found in scene.", MessageType.Warning);
+                EditorGUILayout.HelpBox("label.log_panel.warning", MessageType.Warning);
                 break;
         }
 
-        EditorGUILayout.HelpBox("LogPanel will automatically generate 'LogInstance' in play mode.", MessageType.Info);
+        EditorGUILayout.HelpBox("label.log_panel.info".L(EditorUtils.LocalizationID), MessageType.Info);
     }
 }

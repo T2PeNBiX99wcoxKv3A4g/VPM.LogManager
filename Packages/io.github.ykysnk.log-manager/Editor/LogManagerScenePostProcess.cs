@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using io.github.ykysnk.Localization.Editor;
 using UdonSharp;
 using UnityEditor.Build;
 using UnityEditor.Build.Reporting;
@@ -26,7 +27,7 @@ public class LogManagerScenePostProcess : IProcessSceneWithReport
             case < 1:
                 return;
             case > 1:
-                throw new("More than one LogManager found in scene.");
+                throw new("log.log_manager_scene_post_process.error".L(EditorUtils.LocalizationID));
         }
 
         _logManager = logManagers[0];
@@ -55,7 +56,8 @@ public class LogManagerScenePostProcess : IProcessSceneWithReport
                 logInstanceObj.SetActive(false);
                 var logInstance = logInstanceObj.GetComponent<LogInstance>();
                 if (!Utilities.IsValid(logInstance))
-                    throw new NullReferenceException($"Log Instance {i} is not a valid LogInstance");
+                    throw new NullReferenceException(string.Format(
+                        "log.log_manager_scene_post_process.null_reference_exception".L(EditorUtils.LocalizationID), i));
                 logInstanceList.Add(logInstance);
             }
 

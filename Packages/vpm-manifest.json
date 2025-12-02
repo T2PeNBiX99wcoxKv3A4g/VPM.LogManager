@@ -20,6 +20,9 @@
     },
     "blueamulet.udonsharpoptimizer": {
       "version": "1.0.12"
+    },
+    "io.github.ykysnk.localization": {
+      "version": "0.0.4"
     }
   },
   "locked": {
@@ -53,7 +56,7 @@
       }
     },
     "io.github.ykysnk.utils": {
-      "version": "0.6.0",
+      "version": "0.8.0",
       "dependencies": {
         "com.vrchat.base": ">=3.9.0"
       }
@@ -69,6 +72,13 @@
       "version": "1.0.12",
       "dependencies": {
         "com.vrchat.worlds": "^3.4.2"
+      }
+    },
+    "io.github.ykysnk.localization": {
+      "version": "0.0.4",
+      "dependencies": {
+        "com.vrchat.base": ">=3.10.0",
+        "io.github.ykysnk.utils": ">=0.8.0"
       }
     }
   }

@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6d4aceda1b14230b2aad2be71d6691b, type: 3}
+  m_Name: ja-JP
+  m_EditorClassIdentifier: 
+  localizationID: io.github.ykysnk.log-manager
+  displayName: "\u65E5\u672C\u8A9E"
+  translates:
+  - key: label.language
+    translate: "\u8A00\u8A9E"
+    tooltip: "\u30A8\u30C7\u30A3\u30BF\u30FC\u3067\u30BF\u30FC\u30B2\u30C3\u30C8\u8A00\u8A9E\u3092\u5909\u66F4\u3057\u307E\u3059\u3002"
+  - key: label.log_instance.input_field
+    translate: "\u5165\u529B\u30D5\u30A3\u30FC\u30EB\u30C9"
+    tooltip: 
+  - key: label.log_instance.info
+    translate: "\u3053\u308C\u306F\u5165\u529B\u30D5\u30A3\u30FC\u30EB\u30C9\u306E\u30C6\u30AD\u30B9\u30C8\u3092\u5909\u66F4\u3059\u308B\u305F\u3081\u306E\u30D8\u30EB\u30D1\u30FC\u30AF\u30E9\u30B9\u3067\u3059\u3002"
+    tooltip: 
+  - key: label.log_manager.warning
+    translate: "\u30B7\u30FC\u30F3\u5185\u3067\u8907\u6570\u306E\u30ED\u30B0\u30DE\u30CD\u30FC\u30B8\u30E3\u30FC\u304C\u691C\u51FA\u3055\u308C\u307E\u3057\u305F\u3002"
+    tooltip: 
+  - key: label.log_manager.error
+    translate: "\u30B7\u30FC\u30F3\u5185\u306B\u30ED\u30B0\u30D1\u30CD\u30EB\u304C\u898B\u3064\u304B\u308A\u307E\u305B\u3093\u3002"
+    tooltip: 
+  - key: label.log_manager.info
+    translate: "\u30ED\u30B0\u30DE\u30CD\u30FC\u30B8\u30E3\u30FC\u306F\u81EA\u52D5\u7684\u306B\u3059\u3079\u3066\u306E\u30ED\u30B0\u30D1\u30CD\u30EB\u3092\u898B\u3064\u3051\u307E\u3059"
+    tooltip: 
+  - key: label.log_panel.content_transform
+    translate: "\u30B3\u30F3\u30C6\u30F3\u30C4\u30FB\u30C8\u30E9\u30F3\u30B9\u30D5\u30A9\u30FC\u30E0"
+    tooltip: 
+  - key: label.log_panel.content_transform.error
+    translate: "\u30B3\u30F3\u30C6\u30F3\u30C4\u30FB\u30C8\u30E9\u30F3\u30B9\u30D5\u30A9\u30FC\u30E0\u304C\u5FC5\u8981\u3067\u3059\u3002"
+    tooltip: 
+  - key: label.log_panel.vertical_layout_group
+    translate: "\u5782\u76F4\u30EC\u30A4\u30A2\u30A6\u30C8\u30B0\u30EB\u30FC\u30D7"
+    tooltip: 
+  - key: label.log_panel.content_size_fitter
+    translate: "\u30B3\u30F3\u30C6\u30F3\u30C4\u30B5\u30A4\u30BA\u30D5\u30A3\u30C3\u30BF\u30FC"
+    tooltip: 
+  - key: label.log_panel.scroll_rect
+    translate: "\u30B9\u30AF\u30ED\u30FC\u30EB\u30FB\u30EC\u30AF\u30C8"
+    tooltip: 
+  - key: label.log_panel.log_instances_prefab
+    translate: "\u30ED\u30B0\u30A4\u30F3\u30B9\u30BF\u30F3\u30B9\u30FB\u30D7\u30EC\u30CF\u30D6"
+    tooltip: 
+  - key: label.log_panel.max_lines
+    translate: "\u6700\u5927\u884C\u6570"
+    tooltip: 
+  - key: label.log_panel.error
+    translate: "\u30B7\u30FC\u30F3\u5185\u306B\u30ED\u30B0\u30DE\u30CD\u30FC\u30B8\u30E3\u30FC\u304C\u898B\u3064\u304B\u308A\u307E\u305B\u3093\u3002"
+    tooltip: 
+  - key: label.log_panel.warning
+    translate: "\u30B7\u30FC\u30F3\u5185\u3067\u8907\u6570\u306E\u30ED\u30B0\u30DE\u30CD\u30FC\u30B8\u30E3\u30FC\u304C\u691C\u51FA\u3055\u308C\u307E\u3057\u305F\u3002"
+    tooltip: 
+  - key: label.log_panel.info
+    translate: "\u30ED\u30B0\u30D1\u30CD\u30EB\u306F\u30D7\u30EC\u30A4\u30E2\u30FC\u30C9\u3067\u81EA\u52D5\u7684\u306B\u30ED\u30B0\u30A4\u30F3\u30B9\u30BF\u30F3\u30B9\u3092\u751F\u6210\u3057\u307E\u3059\u3002"
+    tooltip: 
+  - key: log.log_manager_scene_post_process.error
+    translate: "\u30B7\u30FC\u30F3\u3067\u8907\u6570\u306E\u30ED\u30B0\u30DE\u30CD\u30FC\u30B8\u30E3\u30FC\u304C\u691C\u51FA\u3055\u308C\u307E\u3057\u305F\u3002"
+    tooltip: 
+  - key: log.log_manager_scene_post_process.null_reference_exception
+    translate: "\u30ED\u30B0\u30A4\u30F3\u30B9\u30BF\u30F3\u30B9 {0} \u306F\u6709\u52B9\u306A\u30ED\u30B0\u30A4\u30F3\u30B9\u30BF\u30F3\u30B9\u3067\u306F\u3042\u308A\u307E\u305B\u3093"
+    tooltip: 

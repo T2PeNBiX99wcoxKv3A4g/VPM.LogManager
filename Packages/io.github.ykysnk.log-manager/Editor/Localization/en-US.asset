@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6d4aceda1b14230b2aad2be71d6691b, type: 3}
+  m_Name: en-US
+  m_EditorClassIdentifier: 
+  localizationID: io.github.ykysnk.log-manager
+  displayName: English
+  translates:
+  - key: label.language
+    translate: Language
+    tooltip: Change your target language in the editor.
+  - key: label.log_instance.input_field
+    translate: Input Field
+    tooltip: 
+  - key: label.log_instance.info
+    translate: This is helper class to change text of input field.
+    tooltip: 
+  - key: label.log_manager.warning
+    translate: More than one LogManager found in scene.
+    tooltip: 
+  - key: label.log_manager.error
+    translate: No LogPanel found in scene.
+    tooltip: 
+  - key: label.log_manager.info
+    translate: LogManager will automatically find all log panels
+    tooltip: 
+  - key: label.log_panel.content_transform
+    translate: Content Transform
+    tooltip: 
+  - key: label.log_panel.content_transform.error
+    translate: Content Transform is required.
+    tooltip: 
+  - key: label.log_panel.vertical_layout_group
+    translate: Vertical Layout Group
+    tooltip: 
+  - key: label.log_panel.content_size_fitter
+    translate: Content Size Fitter
+    tooltip: 
+  - key: label.log_panel.scroll_rect
+    translate: Scroll Rect
+    tooltip: 
+  - key: label.log_panel.log_instances_prefab
+    translate: Log Instances Prefab
+    tooltip: 
+  - key: label.log_panel.max_lines
+    translate: Max Lines
+    tooltip: 
+  - key: label.log_panel.error
+    translate: No Log Manager found in scene.
+    tooltip: 
+  - key: label.log_panel.warning
+    translate: More than one Log Manager found in scene.
+    tooltip: 
+  - key: label.log_panel.info
+    translate: Log panel will automatically generate log instance in play mode.
+    tooltip: 
+  - key: log.log_manager_scene_post_process.error
+    translate: More than one log manager found in scene.
+    tooltip: 
+  - key: log.log_manager_scene_post_process.null_reference_exception
+    translate: Log instance {0} is not a valid log instance
+    tooltip: 

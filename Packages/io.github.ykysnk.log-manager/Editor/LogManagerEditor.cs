@@ -1,23 +1,23 @@
-using io.github.ykysnk.utils.Editor;
+using io.github.ykysnk.Localization.Editor;
 using UnityEditor;
 
 namespace io.github.ykysnk.LogManager.Editor;
 
 [CustomEditor(typeof(LogManager))]
-public class LogManagerEditor : BasicEditor
+public class LogManagerEditor : LogManagerEditorBase
 {
-    protected override void OnInspectorGUIDraw()
+    protected override void OnLogManagerInspectorGUI()
     {
         var count = FindObjectsOfType<LogManager>().Length;
 
         if (count > 1)
-            EditorGUILayout.HelpBox("More than one LogManager found in scene.", MessageType.Warning);
+            EditorGUILayout.HelpBox("label.log_manager.warning".L(EditorUtils.LocalizationID), MessageType.Warning);
 
         var count2 = FindObjectsOfType<LogPanel>().Length;
 
         if (count2 < 1)
-            EditorGUILayout.HelpBox("No LogPanel found in scene.", MessageType.Error);
+            EditorGUILayout.HelpBox("label.log_manager.error".L(EditorUtils.LocalizationID), MessageType.Error);
 
-        EditorGUILayout.HelpBox("LogManager will automatically find all log panels", MessageType.Info);
+        EditorGUILayout.HelpBox("label.log_manager.info".L(EditorUtils.LocalizationID), MessageType.Info);
     }
 }
