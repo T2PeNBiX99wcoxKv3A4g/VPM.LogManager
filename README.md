@@ -1,3 +1,1 @@
-# Log Manager
-
-Log manager for world
+Packages/io.github.ykysnk.log-manager/README.md
