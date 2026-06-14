@@ -261,6 +261,12 @@
       "source": "embedded",
       "dependencies": {}
     },
+    "io.github.ykysnk.yky-toolkit": {
+      "version": "file:io.github.ykysnk.yky-toolkit",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
     "jp.lilxyzw.editortoolbox": {
       "version": "file:jp.lilxyzw.editortoolbox",
       "depth": 0,
