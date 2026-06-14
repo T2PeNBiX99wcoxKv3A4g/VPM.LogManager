@@ -1,8 +1,9 @@
 {
   "name": "io.github.ykysnk.log-manager",
   "displayName": "Log Manager",
-  "version": "0.1.12",
-  "description": "Log manager for world",
+  "version": "0.2.0",
+  "unity": "2022.3",
+  "description": "Log manager for the world",
   "gitDependencies": {},
   "vpmDependencies": {
     "com.vrchat.worlds": ">=3.9.0",
@@ -16,5 +17,6 @@
   },
   "legacyFolders": {},
   "legacyFiles": {},
-  "localPath": "L:\\VRChatProjects\\VPM.LogManager\\Packages\\io.github.ykysnk.log-manager"
+  "changelogUrl": "https://github.com/T2PeNBiX99wcoxKv3A4g/VPM.LogManager/blob/main/CHANGELOG.md",
+  "license": "MIT"
 }
