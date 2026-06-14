@@ -7,7 +7,7 @@ internal abstract class LogManagerEditorBase : BasicEditor
 {
     internal const string LocalizationID = "io.github.ykysnk.log-manager";
 
-    protected override void OnInspectorGUIDraw()
+    protected override void OnErrorHandleInspectorGUI()
     {
         OnLogManagerInspectorGUI();
         GlobalLocalization.SelectLanguageGUI(LocalizationID);

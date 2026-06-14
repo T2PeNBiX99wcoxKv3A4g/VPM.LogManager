@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using io.github.ykysnk.Localization.Editor;
 using UdonSharp;
 using UnityEditor.Build;
 using UnityEditor.Build.Reporting;
@@ -27,7 +26,7 @@ internal class LogManagerScenePostProcess : IProcessSceneWithReport
             case < 1:
                 return;
             case > 1:
-                throw new("log.log_manager_scene_post_process.error".L(LogManagerEditorBase.LocalizationID));
+                throw new("log.log_manager_scene_post_process.error".S());
         }
 
         _logManager = logManagers[0];
@@ -57,8 +56,7 @@ internal class LogManagerScenePostProcess : IProcessSceneWithReport
                 var logInstance = logInstanceObj.GetComponent<LogInstance>();
                 if (!Utilities.IsValid(logInstance))
                     throw new NullReferenceException(string.Format(
-                        "log.log_manager_scene_post_process.null_reference_exception".L(LogManagerEditorBase
-                            .LocalizationID), i));
+                        "log.log_manager_scene_post_process.null_reference_exception".S(), i));
                 logInstanceList.Add(logInstance);
             }
 

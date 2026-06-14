@@ -1,4 +1,3 @@
-using io.github.ykysnk.Localization.Editor;
 using TMPro;
 using UnityEditor;
 
@@ -24,8 +23,8 @@ internal class LogInstanceEditor : LogManagerEditorBase
         if (_inputFieldProperty?.objectReferenceValue == null ||
             _inputFieldProperty?.objectReferenceValue != inputFieldComponent)
             EditorGUILayout.PropertyField(_inputFieldProperty,
-                "label.log_instance.input_field".G(LocalizationID));
+                "label.log_instance.input_field".G());
 
-        EditorGUILayout.HelpBox("label.log_instance.info".L(LocalizationID), MessageType.Info);
+        EditorGUILayout.HelpBox("label.log_instance.info".S(), MessageType.Info);
     }
 }

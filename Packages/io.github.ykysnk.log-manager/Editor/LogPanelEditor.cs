@@ -1,4 +1,3 @@
-using io.github.ykysnk.Localization.Editor;
 using UnityEditor;
 
 namespace io.github.ykysnk.LogManager.Editor;
@@ -33,37 +32,37 @@ internal class LogPanelEditor : LogManagerEditorBase
     protected override void OnLogManagerInspectorGUI()
     {
         EditorGUILayout.PropertyField(_contentTransformProperty,
-            "label.log_panel.content_transform".G(LocalizationID));
+            "label.log_panel.content_transform".G());
         if (_contentTransformProperty?.objectReferenceValue == null)
-            EditorGUILayout.HelpBox("label.log_panel.content_transform.error".L(LocalizationID),
+            EditorGUILayout.HelpBox("label.log_panel.content_transform.error".S(),
                 MessageType.Error);
 
         EditorGUILayout.PropertyField(_verticalLayoutGroupProperty,
-            "label.log_panel.vertical_layout_group".G(LocalizationID));
+            "label.log_panel.vertical_layout_group".G());
         EditorGUILayout.PropertyField(_contentSizeFitterProperty,
-            "label.log_panel.content_size_fitter".G(LocalizationID));
-        EditorGUILayout.PropertyField(_scrollRectProperty, "label.log_panel.scroll_rect".G(LocalizationID));
+            "label.log_panel.content_size_fitter".G());
+        EditorGUILayout.PropertyField(_scrollRectProperty, "label.log_panel.scroll_rect".G());
 
         EditorGUILayout.PropertyField(_logInstancesPrefabProperty,
-            "label.log_panel.log_instances_prefab".G(LocalizationID));
+            "label.log_panel.log_instances_prefab".G());
         if (_logInstancesPrefabProperty?.objectReferenceValue == null)
-            EditorGUILayout.HelpBox("label.log_panel.log_instances_prefab.error".L(LocalizationID),
+            EditorGUILayout.HelpBox("label.log_panel.log_instances_prefab.error".S(),
                 MessageType.Error);
 
-        EditorGUILayout.PropertyField(_maxLinesProperty, "label.log_panel.max_lines".G(LocalizationID));
+        EditorGUILayout.PropertyField(_maxLinesProperty, "label.log_panel.max_lines".G());
 
         var count = FindObjectsOfType<LogManager>().Length;
 
         switch (count)
         {
             case < 1:
-                EditorGUILayout.HelpBox("label.log_panel.error".L(LocalizationID), MessageType.Error);
+                EditorGUILayout.HelpBox("label.log_panel.error".S(), MessageType.Error);
                 break;
             case > 1:
                 EditorGUILayout.HelpBox("label.log_panel.warning", MessageType.Warning);
                 break;
         }
 
-        EditorGUILayout.HelpBox("label.log_panel.info".L(LocalizationID), MessageType.Info);
+        EditorGUILayout.HelpBox("label.log_panel.info".S(), MessageType.Info);
     }
 }
