@@ -4,10 +4,18 @@ using UnityEngine;
 
 namespace Test
 {
-    public class Test : CheatClientProtectorBehaviour
 #if !COMPILER_UDONSHARP && UNITY_EDITOR
-        , ILogManager
+    public partial class Test : ILogManager
+    {
+        public LogManager LogManager
+        {
+            get => logManager;
+            set => logManager = value;
+        }
+    }
 #endif
+
+    public partial class Test : CheatClientProtectorBehaviour
     {
         [SerializeField] private LogManager logManager;
 
@@ -15,14 +23,6 @@ namespace Test
         {
             logManager.Log("black", "test", $"test: {this}", logManager.RandomKey);
         }
-
-#if !COMPILER_UDONSHARP && UNITY_EDITOR
-        public LogManager LogManager
-        {
-            get => logManager;
-            set => logManager = value;
-        }
-#endif
 
         public override void Interact()
         {
